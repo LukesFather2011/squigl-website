@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SQUIGL</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+
+<!-- Animated waveform background -->
+<canvas id="wave-canvas"></canvas>
+
+<!-- ── NAV ── -->
+<nav>
+  <a href="#hero" class="nav-logo">
+    <img src="assets/squigl-logo.png" alt="SQUIGL logo" class="nav-logo-img" />
+    <span>SQUIGL</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#music">Music</a></li>
+    <li><a href="#video">Video</a></li>
+    <li><a href="#itw">In The Works</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ── HERO ── -->
+<section id="hero">
+  <p class="hero-eyebrow">Artist · Producer · Creator</p>
+  <h1 class="hero-title">SQUIGL</h1>
+  <p class="hero-sub">
+    Sound that moves. Music that leaves a mark. Explore the latest releases,
+    what's coming next, and the story behind the frequency.
+  </p>
+  <div class="hero-cta">
+    <a href="#music" class="btn-primary">Listen Now</a>
+    <a href="#itw" class="btn-ghost">In The Works</a>
+  </div>
+</section>
+
+<!-- ── MUSIC ── -->
+<section id="music">
+  <div class="reveal">
+    <p class="section-label">// Latest Music</p>
+    <div class="divider"></div>
+  </div>
+  <div class="music-grid reveal">
+
+    <!-- SPOTIFY: Replace src with your own Spotify embed URL -->
+    <div class="embed-card">
+      <iframe
+        style="border-radius:12px"
+        src="https://open.spotify.com/embed/track/7dW2VfXKhAbSAFzl9P9iZd?utm_source=generator"
+        width="100%" height="152" frameBorder="0" allowfullscreen=""
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        loading="lazy">
+      </iframe>
+      <p class="embed-label">Latest Single</p>
+    </div>
+
+    <!-- SOUNDCLOUD: Replace url= param with your SoundCloud profile/track URL -->
+    <div class="embed-card">
+      <iframe
+        src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/squigl&color=%23cc00ff&inverse=true&auto_play=false&show_user=true"
+        height="152"
+        allow="autoplay">
+      </iframe>
+      <p class="embed-label">SoundCloud</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── VIDEO ── -->
+<section id="video">
+  <div class="reveal">
+    <p class="section-label">// Visual</p>
+    <div class="divider"></div>
+  </div>
+  <div class="video-wrapper reveal">
+    <iframe
+      src="https://www.youtube.com/embed/h_oatYwBFgc?si=LzRtvCwDMHqXhDCC"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      referrerpolicy="strict-origin-when-cross-origin"
+      allowfullscreen>
+    </iframe>
+  </div>
+</section>
+
+<!-- ── IN THE WORKS ── -->
+<section id="itw">
+  <div class="reveal">
+    <p class="section-label">// In The Works</p>
+    <div class="divider"></div>
+  </div>
+  <div class="itw-list reveal">
+
+    <!-- ITW CARD: Duplicate for each project. Status options: Coming Soon / In Progress / Collab / Dropping Soon -->
+    <div class="itw-card">
+      <span class="itw-status">In Progress</span>
+      <div class="itw-info">
+        <div class="itw-title">Untitled Project</div>
+        <div class="itw-desc">Something is being built. Details to follow.</div>
+      </div>
+    </div>
+
+    <div class="itw-card">
+      <span class="itw-status">Collab</span>
+      <div class="itw-info">
+        <div class="itw-title">TBA</div>
+        <div class="itw-desc">A collaboration in the works. Stay tuned.</div>
+      </div>
+    </div>
+
+    <div class="itw-card">
+      <span class="itw-status">Dropping Soon</span>
+      <div class="itw-info">
+        <div class="itw-title">Riding the Wave</div>
+        <div class="itw-desc">My newest rele</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── ABOUT ── -->
+<section id="about">
+  <div class="about-text reveal">
+    <p class="section-label">// About</p>
+    <div class="divider"></div>
+    <p>
+      <strong>SQUIGL</strong> is an artist, producer, and performer driven by the space
+      between sound and feeling, where frequency becomes something you can touch.
+    </p>
+    <p>
+      His music pushes toward something new. Every release, every set, every frequency is intentional.
+    </p>
+    <p>This is where it lives.</p>
+  </div>
+  <div class="about-visual reveal">
+    <div class="about-logo-wrap">
+      <img src="assets/squigl-logo.png" alt="SQUIGL" class="about-logo-img" />
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section id="contact">
+  <h2 class="contact-title reveal">GET IN <span>TOUCH</span></h2>
+  <p class="contact-sub reveal">Projects, features, collabs — let's make something together.</p>
+
+  <!-- SOCIAL LINKS: Replace each href="#" with your actual profile URL -->
+  <div class="social-row reveal">
+    <a href="https://open.spotify.com/artist/3eHEbnWZ27MDBjAHcdsJw5" class="social-link">Spotify</a>
+    <a href="https://soundcloud.com/squigl" class="social-link">SoundCloud</a>
+    <a href="https://www.instagram.com/squigl.music/" class="social-link">Instagram</a>
+    <a href="https://www.youtube.com/@SQUIGL-Music" class="social-link">YouTube</a>
+    <a href="https://squigl.bandcamp.com/dashboard" class="social-link">Bandcamp</a>
+  </div>
+
+  <!-- EMAIL: Replace with your actual email address -->
+  <a href="mailto:squiglmusic@gmail.com" class="btn-primary reveal">squiglmusic@gmail.com</a>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <p>&copy; 2026 SQUIGL — All rights reserved.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
