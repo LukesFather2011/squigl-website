@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>SQUIGL — Press Kit</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0a0010;
+  --bg2:#0f0018;
+  --magenta:#cc00ff;
+  --magenta-bright:#e040ff;
+  --text:#f0e6ff;
+  --muted:#7a5a99;
+  --border:rgba(204,0,255,0.18);
+  --border-hover:rgba(204,0,255,0.45);
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-weight:300;overflow-x:hidden;min-height:100vh}
+canvas#wc{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;opacity:0.14;pointer-events:none}
+.wrap{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:0 2rem}
+header{position:relative;z-index:1;padding:4rem 2rem 3rem;max-width:860px;margin:0 auto;display:flex;flex-direction:row;align-items:flex-start;gap:2rem}
+.header-logo{flex:0 0 auto;display:flex;align-items:center;justify-content:center;margin-top:calc(0.65rem + 0.35rem + 1.2rem + 0.3rem)}
+.header-logo img{width:clamp(4.4rem,12.3vw,8.8rem);height:clamp(4.4rem,12.3vw,8.8rem);object-fit:contain;filter:drop-shadow(0 0 28px rgba(204,0,255,0.55))}
+.header-text{flex:1;display:flex;flex-direction:column;align-items:flex-start}
+@media(max-width:600px){header{flex-direction:column;gap:1.5rem}.header-logo{margin-top:0}.header-logo img{width:72px;height:72px}}
+.pk-label{font-size:0.65rem;letter-spacing:0.4em;text-transform:uppercase;color:var(--magenta);margin-bottom:1.2rem;border:1px solid var(--border);padding:0.35rem 0.9rem;display:inline-block}
+.pk-name{font-family:'Bebas Neue',sans-serif;font-size:clamp(5rem,14vw,10rem);line-height:0.88;letter-spacing:0.05em;color:var(--text);margin-bottom:1rem}
+.pk-name span{color:var(--magenta)}
+.pk-tagline{font-size:0.9rem;color:var(--muted);letter-spacing:0.06em;max-width:400px;line-height:1.7;margin-bottom:2rem}
+.pk-meta-row{display:flex;flex-direction:row;gap:2rem;flex-wrap:wrap}
+.pk-meta-item{display:flex;flex-direction:column;gap:0.2rem}
+.pk-meta-label{font-size:0.6rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--muted)}
+.pk-meta-val{font-size:0.85rem;color:var(--text);font-weight:500}
+.divider{width:100%;height:1px;background:linear-gradient(to right,var(--magenta),transparent);opacity:0.25;margin:2.5rem 0}
+.sec-label{font-size:0.65rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--magenta);margin-bottom:1.8rem}
+.bio-block{display:flex;flex-direction:column;gap:1rem;max-width:680px}
+.bio-block p{font-size:0.92rem;color:var(--muted);line-height:1.9}
+.bio-block p strong{color:var(--text);font-weight:500}
+.embeds-grid{display:flex;flex-direction:row;flex-wrap:wrap;gap:1.5rem}
+.embed-card{flex:1 1 340px;background:rgba(255,255,255,0.03);border:1px solid var(--border);overflow:hidden;transition:border-color 0.3s,transform 0.3s}
+.embed-card:hover{border-color:var(--border-hover);transform:translateY(-3px)}
+.embed-card iframe{width:100%;display:block;border:none}
+.embed-tag{padding:0.65rem 1rem;font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--muted);border-top:1px solid rgba(204,0,255,0.1)}
+.video-wrap{position:relative;width:100%;max-width:780px;aspect-ratio:16/9;border:1px solid var(--border);overflow:hidden;transition:border-color 0.3s}
+.video-wrap:hover{border-color:var(--border-hover)}
+.video-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
+.links-grid{display:flex;flex-direction:row;flex-wrap:wrap;gap:1rem}
+.link-pill{display:inline-flex;flex-direction:row;align-items:center;gap:0.6rem;padding:0.6rem 1.2rem;border:1px solid var(--border);text-decoration:none;color:var(--muted);font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;transition:color 0.2s,border-color 0.2s,transform 0.2s}
+.link-pill:hover{color:var(--magenta-bright);border-color:var(--border-hover);transform:translateY(-2px)}
+.link-pill svg{width:13px;height:13px;flex-shrink:0;opacity:0.6}
+.contact-block{display:flex;flex-direction:column;gap:1rem;align-items:flex-start}
+.contact-email{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.6rem,4vw,2.8rem);letter-spacing:0.08em;color:var(--text);text-decoration:none;transition:color 0.2s}
+.contact-email:hover{color:var(--magenta)}
+.contact-note{font-size:0.8rem;color:var(--muted);line-height:1.6;max-width:460px}
+footer{position:relative;z-index:1;padding:2rem;text-align:center;color:var(--muted);font-size:0.62rem;letter-spacing:0.18em;margin-top:2rem;border-top:1px solid rgba(204,0,255,0.08)}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity 0.7s ease,transform 0.7s ease}
+.reveal.v{opacity:1;transform:translateY(0)}
+@media(max-width:600px){
+  header{padding:3rem 1.5rem 2rem}
+  .wrap{padding:0 1.5rem}
+  .embeds-grid{flex-direction:column}
+  .links-grid{gap:0.7rem}
+}
+</style>
+</head>
+<body>
+<canvas id="wc"></canvas>
+<div style="position:relative;z-index:1;padding:1.2rem 2rem 0;max-width:860px;margin:0 auto"><a href="/" style="display:inline-flex;flex-direction:row;align-items:center;gap:0.5rem;text-decoration:none;color:#7a5a99;font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;transition:color 0.2s" onmouseover="this.style.color='#e040ff'" onmouseout="this.style.color='#7a5a99'"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>squiglmusic.com</a></div>
+<header>
+  <div class="header-logo">
+    <img src="/assets/squigl-logo.png" alt="SQUIGL logo" />
+  </div>
+  <div class="header-text">
+    <span class="pk-label">Press Kit — 2026</span>
+    <h1 class="pk-name">SQ<span>UI</span>GL</h1>
+    <p class="pk-tagline">Artist · Producer · Creator<br>Independent</p>
+    <div class="pk-meta-row">
+      <div class="pk-meta-item"><span class="pk-meta-label">Genre</span><span class="pk-meta-val">Electronic / Downtempo / Dance</span></div>
+      <div class="pk-meta-item"><span class="pk-meta-label">Role</span><span class="pk-meta-val">Artist & Producer</span></div>
+      <div class="pk-meta-item"><span class="pk-meta-label">Website</span><span class="pk-meta-val">squiglmusic.com</span></div>
+      <div class="pk-meta-item"><span class="pk-meta-label">Contact</span><span class="pk-meta-val">squiglmusic@gmail.com</span></div>
+    </div>
+  </div>
+</header>
+<div class="wrap">
+  <div class="divider reveal"></div>
+  <section style="margin-bottom:4rem" class="reveal">
+    <p class="sec-label">// Biography</p>
+    <div class="bio-block">
+      <p><strong>SQUIGL</strong> is an independent artist and producer working at the intersection of sound design, electronic production, Downtempo, and dance driven beats. Guided by the space between texture and feeling, SQUIGL builds music that is intentional from the frequency up.</p>
+      <p>Every release is a statement. Every sound is chosen. This is music made for the headphones-on, eyes-closed moment; and for the ones who feel it before they understand it.</p>
+      <p>Currently independent, SQUIGL is available for production credits, collaborative features, licensing opportunities, and sync placements. Reach out to start the conversation.</p>
+    </div>
+  </section>
+  <div class="divider reveal"></div>
+  <section style="margin-bottom:4rem" class="reveal">
+    <p class="sec-label">// Music</p>
+    <div class="embeds-grid">
+      <div class="embed-card">
+        <iframe style="border-radius:0" src="https://open.spotify.com/embed/track/2pIwfe04i9Z5fiFF3pInk8?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        <p class="embed-tag">Spotify — Latest Single</p>
+      </div>
+      <div class="embed-card">
+        <iframe src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2320845209&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true" 
+        height="152" allow="autoplay"></iframe>
+        <p class="embed-tag">SoundCloud</p>
+      </div>
+    </div>
+  </section>
+  <div class="divider reveal"></div>
+  <section style="margin-bottom:4rem" class="reveal">
+    <p class="sec-label">// Video</p>
+    <div class="video-wrap">
+      <iframe src="https://www.youtube.com/embed/nkhw7h3QoJo?si=fxTuR2RmTBnGTgtb" title="SQUIGL — YouTube" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+  </section>
+  <div class="divider reveal"></div>
+  <section style="margin-bottom:4rem" class="reveal">
+    <p class="sec-label">// Links</p>
+    <div class="links-grid">
+      <a href="https://open.spotify.com/artist/3eHEbnWZ27MDBjAHcdsJw5" class="link-pill" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.586 14.424a.622.622 0 01-.857.207c-2.348-1.435-5.304-1.76-8.785-.964a.622.622 0 01-.277-1.215c3.809-.87 7.076-.496 9.712 1.115.294.181.387.566.207.857zm1.224-2.723a.78.78 0 01-1.072.257c-2.687-1.652-6.785-2.131-9.965-1.166a.78.78 0 01-.973-.519.781.781 0 01.52-.973c3.632-1.102 8.147-.568 11.233 1.329a.78.78 0 01.257 1.072zm.105-2.835C14.692 8.95 9.375 8.775 6.297 9.71a.937.937 0 11-.543-1.794c3.526-1.072 9.385-.866 13.088 1.329a.937.937 0 01-.927 1.621z"/></svg>Spotify</a>
+      <a href="https://soundcloud.com/squigl" class="link-pill" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M1.175 12.225c-.015.067-.02.133-.02.2 0 .467.37.85.835.85.38 0 .697-.245.81-.585l.33-1.93-.33-2.005c-.113-.34-.43-.585-.81-.585-.465 0-.835.383-.835.85 0 .067.005.133.02.2L.83 12.225h.345zm2.21 1.025l.44-2.6-.44-2.62c-.13-.42-.5-.72-.935-.72-.54 0-.975.435-.975.975 0 .055.005.11.01.165L2.2 12.225l-.715 2.6c0 .55.435.98.975.98.435 0 .805-.295.935-.72l.44-2.6-.45.765zm2.06.99l.535-3.59-.535-3.44c-.155-.52-.62-.895-1.17-.895-.65 0-1.175.525-1.175 1.175 0 .06.005.12.01.18l.48 2.98-.48 3.59c-.005.06-.01.12-.01.18 0 .65.525 1.175 1.175 1.175.55 0 1.015-.375 1.17-.895v-.46z"/></svg>SoundCloud</a>
+      <a href="https://www.youtube.com/@SQUIGL-Music" class="link-pill" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.495 6.205a3.007 3.007 0 00-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 00.527 6.205a31.247 31.247 0 00-.522 5.805 31.247 31.247 0 00.522 5.783 3.007 3.007 0 002.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 002.088-2.088 31.247 31.247 0 00.5-5.783 31.247 31.247 0 00-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>YouTube</a>
+      <a href="https://www.instagram.com/squigl.music/" class="link-pill" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>Instagram</a>
+      <a href="https://squigl.bandcamp.com" class="link-pill" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M0 18.75l7.437-13.5H24l-7.438 13.5z"/></svg>Bandcamp</a>
+      <a href="https://squiglmusic.com" class="link-pill" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>squiglmusic.com</a>
+    </div>
+  </section>
+  <div class="divider reveal"></div>
+  <section style="margin-bottom:4rem" class="reveal">
+    <p class="sec-label">// Contact</p>
+    <div class="contact-block">
+      <a href="mailto:squiglmusic@gmail.com" class="contact-email">squiglmusic@gmail.com</a>
+      <p class="contact-note">Available for production, features, licensing, and sync placements. Response within 48 hours.</p>
+    </div>
+  </section>
+</div>
+<footer>&copy; 2026 SQUIGL — All rights reserved &nbsp;·&nbsp; squiglmusic.com</footer>
+<script>
+const canvas=document.getElementById('wc');const ctx=canvas.getContext('2d');let W,H,t=0;
+function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight}
+resize();window.addEventListener('resize',resize);
+function dw(yB,amp,freq,speed,color,lw){ctx.beginPath();ctx.strokeStyle=color;ctx.lineWidth=lw;for(let x=0;x<=W;x+=2){const y=yB+Math.sin((x*freq)+t*speed)*amp+Math.sin((x*freq*0.5)+t*speed*1.3)*amp*0.4;x===0?ctx.moveTo(x,y):ctx.lineTo(x,y);}ctx.stroke();}
+(function loop(){ctx.clearRect(0,0,W,H);dw(H*.3,22,.013,.6,'#4b00a0',1.1);dw(H*.6,15,.019,.85,'#cc00ff',1.4);dw(H*.8,18,.015,.7,'#4b00a0',1.0);t+=.014;requestAnimationFrame(loop)})();
+const obs=new IntersectionObserver(e=>{e.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('v');obs.unobserve(entry.target)}})},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
