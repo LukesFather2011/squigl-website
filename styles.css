@@ -503,6 +503,124 @@ footer {
   transform: translateY(0);
 }
 
+
+/* ============================================================
+   ALBUM
+   ============================================================ */
+#album {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5rem;
+  background: var(--bg);
+}
+
+.album-art-wrap {
+  flex: 0 1 460px;
+  min-width: 0;
+}
+
+.album-art {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border: 1px solid rgba(204,0,255,0.3);
+  box-shadow: 0 0 60px rgba(204,0,255,0.25);
+}
+
+.album-info { flex: 1; min-width: 0; }
+
+.album-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(3.5rem, 9vw, 8rem);
+  line-height: 0.9;
+  letter-spacing: 0.04em;
+  color: var(--text);
+}
+
+.album-title span { color: var(--magenta); }
+
+.album-date {
+  margin-top: 1rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--magenta-bright);
+}
+
+.album-desc {
+  margin-top: 1.5rem;
+  max-width: 480px;
+  color: var(--muted);
+  line-height: 1.8;
+  font-size: 0.95rem;
+}
+
+.album-desc strong { color: var(--text); font-weight: 500; }
+
+.album-tags {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.album-tags li {
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--magenta);
+  border: 1px solid rgba(204,0,255,0.4);
+  padding: 0.3rem 0.8rem;
+}
+
+.countdown {
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.countdown div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 3.5rem;
+}
+
+.countdown span {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.6rem;
+  line-height: 1;
+  color: var(--text);
+}
+
+.countdown small {
+  margin-top: 0.3rem;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.countdown.released { display: block; }
+.countdown.released .out-now {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.2rem;
+  letter-spacing: 0.1em;
+  color: var(--magenta);
+}
+
+.album-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
 /* ============================================================
    RESPONSIVE
    ============================================================ */
@@ -525,10 +643,15 @@ footer {
     flex-direction: column;
   }
 
-  #about {
+  #about,
+  #album {
     flex-direction: column;
-    gap: 3rem;
+    gap: 2.5rem;
   }
+
+  .album-art-wrap { flex: 0 0 auto; width: 100%; max-width: 420px; }
+  .countdown { gap: 1rem; }
+  .countdown span { font-size: 2.1rem; }
 
   .about-visual {
     order: -1;

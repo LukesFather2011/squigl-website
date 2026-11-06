@@ -52,3 +52,34 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.12 });
 
 reveals.forEach(el => observer.observe(el));
+
+/* ── ALBUM COUNTDOWN ── */
+(function () {
+  const box = document.getElementById('countdown');
+  if (!box) return;
+  const release = new Date(2026, 11, 1, 0, 0, 0); // Dec 1, 2026, local time
+  const els = {
+    d: document.getElementById('cd-days'),
+    h: document.getElementById('cd-hours'),
+    m: document.getElementById('cd-mins'),
+    s: document.getElementById('cd-secs')
+  };
+  const pad = n => String(n).padStart(2, '0');
+
+  function tick() {
+    const diff = release - new Date();
+    if (diff <= 0) {
+      box.classList.add('released');
+      box.innerHTML = '<span class="out-now">OUT NOW</span>';
+      clearInterval(timer);
+      return;
+    }
+    els.d.textContent = pad(Math.floor(diff / 86400000));
+    els.h.textContent = pad(Math.floor(diff / 3600000) % 24);
+    els.m.textContent = pad(Math.floor(diff / 60000) % 60);
+    els.s.textContent = pad(Math.floor(diff / 1000) % 60);
+  }
+
+  tick();
+  const timer = setInterval(tick, 1000);
+})();
